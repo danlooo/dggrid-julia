@@ -19,8 +19,10 @@ Pkg.add("dggrid_jll")
 
 This project is using [wrapit](https://github.com/grasph/wrapit), [CxxWrap.jl](https://github.com/JuliaInterop/CxxWrap.jl) and [libcxxwrap-Julia](https://github.com/JuliaInterop/libcxxwrap-Julia) to automatically generate Julia bindings for the C++ code of [DGGRID](https://github.com/sahrk/DGGRID).
 It serves as a basis for the Julia package DGGGS.jl.
-[BinaryBuilder](https://github.com/JuliaPackaging/BinaryBuilder.jl) is used to deploy the binaries as a Julia package.
-Instead of accessing system shell calls, this wrapper approach allows to access the C++ functions directly within Julia using pointers.
-This project is different from [DGGRID7_jll](https://github.com/JuliaBinaryWrappers/DGGRID7_jll.jl) which just provides the binaries of [DGGRID](https://github.com/sahrk/DGGRID) without the Julia bindings.
-Earthly is used for building and testing the software.
+
+- [BinaryBuilder](https://github.com/JuliaPackaging/BinaryBuilder.jl) is used to deploy the binaries as a Julia package.
+File [`src/build_tarballs.jl`](src/build_tarballs.jl) should be used as a strting point for deployment on [Yggdrasil](https://github.com/JuliaPackaging/Yggdrasil)
+- Instead of accessing system shell calls, this wrapper approach allows to access the C++ functions directly within Julia using pointers.
+- This project is different from [DGGRID7_jll](https://github.com/JuliaBinaryWrappers/DGGRID7_jll.jl) which just provides the binaries of [DGGRID](https://github.com/sahrk/DGGRID) without the Julia bindings.
+- Earthly is used for building and testing the software.
 Its [`Earthfile`](Earthfile) provides an overview about the architecture of this project.
