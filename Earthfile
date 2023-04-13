@@ -4,7 +4,7 @@ WORKDIR /work
 
 main:
     BUILD +buildenv
-    BUILD +dggrid-julia
+    BUILD +dggrid-julia-jll
 
 # Tooling to build both the c++ and the julia side of the wrapper
 buildenv:
@@ -35,4 +35,5 @@ dggrid-julia-jll:
     FROM +dggrid-julia
     # Binary Builder does not work inside docker and has its own isolated environment
     LOCALLY
-    RUN julia src/build_tarballs.jl --deploy="local" --debug
+    COPY +dggrid-julia/dggrid-julia dggrid-julia
+    RUN julia dggrid-julia/build_tarballs.jl --deploy="local" --debug

@@ -11,12 +11,12 @@ sources = [
     # GitSource("https://github.com/danlooo/dggrid-julia", "278435a5ca72fe8fa6a836d45f6150c69aa234a3")
 
     # local files for debugging
-    DirectorySource("src", target="020-cxxcalc-binarybuilder/src")
+    DirectorySource("artifacts/dggrid-julia", target="dggrid-julia/src")
 ]
 
 # Bash recipe for building across all platforms
 script = raw"""
-cd $WORKSPACE/srcdir/020-cxxcalc-binarybuilder/src
+cd $WORKSPACE/srcdir/dggrid-julia/src
 cp LICENSE ..
 export JlCxx_DIR=/workspace/$target/destdir/lib/cmake/JlCxx/
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TARGET_TOOLCHAIN} -DCMAKE_BUILD_TYPE=Release .
