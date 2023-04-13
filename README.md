@@ -22,3 +22,5 @@ It serves as a basis for the Julia package DGGGS.jl.
 [BinaryBuilder](https://github.com/JuliaPackaging/BinaryBuilder.jl) is used to deploy the binaries as a Julia package.
 Instead of accessing system shell calls, this wrapper approach allows to access the C++ functions directly within Julia using pointers.
 This project is different from [DGGRID7_jll](https://github.com/JuliaBinaryWrappers/DGGRID7_jll.jl) which just provides the binaries of [DGGRID](https://github.com/sahrk/DGGRID) without the Julia bindings.
+Earthly is used for building and testing the software.
+Its [`Earthfile`](Earthfile) provides an overview about the architecture of this project.

@@ -1,13 +1,19 @@
-FROM debian:bullseye-slim AS dev
+FROM debian:bullseye-slim
 WORKDIR /work
 SHELL ["/bin/bash", "-c"]
 
 ENV JULIA_VERSION=1.8.5
 ENV BINARYBUILDER_AUTOMATIC_APPLE=true
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
 
 # Install base dependencies
 RUN apt-get update && \
-    apt-get install -y build-essential cmake clang libclang-dev git curl
+    apt-get install -y \
+    git curl \
+    build-essential cmake \
+    clang libclang-dev \
+    libgdal28 libgdal-dev
 COPY install-julia.sh ./
 RUN ./install-julia.sh --yes && \
     source /root/.bashrc  && \
@@ -25,6 +31,3 @@ RUN mkdir libcxxwrap-julia-build && \
     cd libcxxwrap-julia-build && \
     cmake -DJulia_EXECUTABLE=/root/.juliaup/bin/julia ../libcxxwrap-julia && \
     cmake --build . --config Release
-
-COPY build.sh .
-RUN chmod +x build.sh && cp build.sh /bin/build
