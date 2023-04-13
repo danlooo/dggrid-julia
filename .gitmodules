@@ -1,0 +1,9 @@
+[submodule "DGGRID"]
+	path = src/DGGRID
+	url = git@github.com:sahrk/DGGRID.git
+[submodule "buildenv/wrapit"]
+	path = buildenv/wrapit
+	url = git@github.com:grasph/wrapit.git
+[submodule "buildenv/libcxxwrap-julia"]
+	path = buildenv/libcxxwrap-julia
+	url = git@github.com:JuliaInterop/libcxxwrap-julia.git
