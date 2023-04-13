@@ -6,8 +6,8 @@ Discrete Global Grid Systems (DGGS) tessellate the surface of the earth with hie
 
 ## Get Started
 
-This project is not been intended to use directly.
-Please look at the Julia package DGGS.jl instead.
+This project is not intended to use directly.
+Please look at the Julia package [DGGS.jl](https://github.com/danlooo/DGGS.jl) instead.
 However, this library package can be installed in Julia with the following commands:
 
 ```Julia
