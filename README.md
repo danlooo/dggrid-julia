@@ -26,3 +26,4 @@ File [`src/build_tarballs.jl`](src/build_tarballs.jl) should be used as a strtin
 - This project is different from [DGGRID7_jll](https://github.com/JuliaBinaryWrappers/DGGRID7_jll.jl) which just provides the binaries of [DGGRID](https://github.com/sahrk/DGGRID) without the Julia bindings.
 - Earthly is used for building and testing the software.
 Its [`Earthfile`](Earthfile) provides an overview about the architecture of this project.
+- A copy of the file `LICENSE` must be also present in the directory `src` to be used by Binary Builder
