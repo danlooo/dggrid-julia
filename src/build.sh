@@ -13,6 +13,7 @@ export JULIA_LOAD_PATH="@:@v#.#:@stdlib:`pwd`"
 export LD_LIBRARY_PATH="`pwd`${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
 cd $1
+rm DGGRID.jl jlDGGRID.cxx jlDGGRID.h # ensure clean re-build
 make
 mkdir ../out
 cp -t ../out *.so *.cxx *.h *.jl

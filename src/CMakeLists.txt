@@ -11,6 +11,8 @@ set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib;${jlDGGRID_location}")
 
 message(STATUS "Found jlDGGRID at ${jlDGGRID_location}")
 
+target_include_directories(jlDGGRID PRIVATE /workspace/srcdir/dggrid-julia/src/DGGRID/src/apps/dggrid)
+
 add_library(jlDGGRID SHARED jlDGGRID.cxx)
 # required by BinaryBuilder
 target_include_directories(jlDGGRID PRIVATE /workspace/destdir/include/julia)

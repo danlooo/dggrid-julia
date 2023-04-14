@@ -28,7 +28,10 @@ dggrid-julia:
     FROM +buildenv
     COPY src dggrid-julia
     RUN bash dggrid-julia/build.sh dggrid-julia
-    SAVE ARTIFACT dggrid-julia
+    SAVE ARTIFACT dggrid-julia/DGGRID.jl AS LOCAL src/DGGRID.jl
+    SAVE ARTIFACT dggrid-julia/jlDGGRID.cxx AS LOCAL src/jlDGGRID.cxx
+    SAVE ARTIFACT dggrid-julia/jlDGGRID.h AS LOCAL src/jlDGGRID.h
+
 
 # Compile those wrappers with Binary Builder
 dggrid-julia-jll:
