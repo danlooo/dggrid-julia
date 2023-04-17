@@ -4,19 +4,25 @@ cmake_minimum_required(VERSION 2.8.12)
 set(CMAKE_MACOSX_RPATH 1)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
-find_package(jlDGGRID)
-get_target_property(jlDGGRID_location jlDGGRID::cxxwrap_julia LOCATION)
-get_filename_component(jlDGGRID_location ${jlDGGRID_location} DIRECTORY)
-set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib;${jlDGGRID_location}")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-message(STATUS "Found jlDGGRID at ${jlDGGRID_location}")
+find_package(JlCxx)
+get_target_property(JlCxx_location JlCxx::cxxwrap_julia LOCATION)
+get_filename_component(JlCxx_location ${JlCxx_location} DIRECTORY)
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib;${JlCxx_location}")
 
-target_include_directories(jlDGGRID PRIVATE /workspace/srcdir/dggrid-julia/src/DGGRID/src/apps/dggrid)
+add_subdirectory(DGGRID)
 
 add_library(jlDGGRID SHARED jlDGGRID.cxx)
-# required by BinaryBuilder
-target_include_directories(jlDGGRID PRIVATE /workspace/destdir/include/julia)
-target_link_libraries(jlDGGRID jlDGGRID::cxxwrap_julia)
+target_include_directories(jlDGGRID PRIVATE
+    /workspace/destdir/include/julia
+    DGGRID/src/apps/dggrid
+    DGGRID/src/lib
+    DGGRID/src/lib/dglib/include
+    DGGRID/src/lib/shapelib/include/shapelib
+)
+target_link_libraries(jlDGGRID JlCxx::cxxwrap_julia)
 
 install(TARGETS
     jlDGGRID
