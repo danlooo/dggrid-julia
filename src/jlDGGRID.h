@@ -1,3 +1,2 @@
 #include "dggrid.cpp"
-#include "clipper.cpp"
-#include "binvals.cpp"
+#include "transform.cpp"

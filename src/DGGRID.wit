@@ -1,4 +1,4 @@
 module_name         = "DGGRID"
-input               = [ "dggrid.cpp", "clipper.cpp", "binvals.cpp" ] 
+input               = ["dggrid.cpp", "transform.cpp"] 
 include_dirs        = [ "DGGRID/src/apps/dggrid/" ]
 cxx-std             = "c++17"
