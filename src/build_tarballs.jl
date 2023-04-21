@@ -19,7 +19,7 @@ script = raw"""
 cd $WORKSPACE/srcdir/dggrid-julia/src
 cp LICENSE ..
 export JlCxx_DIR=/workspace/$target/destdir/lib/cmake/JlCxx/
-cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TARGET_TOOLCHAIN} -DCMAKE_BUILD_TYPE=Release .
+cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TARGET_TOOLCHAIN} -DCMAKE_BUILD_TYPE=Release -WITH_GDAL=ON  .
 make -j${nproc}
 
 mkdir -p $libdir
@@ -32,8 +32,8 @@ esac
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = [
-    Platform("x86_64", "linux"; libc="glibc")
-    # Platform("aarch64", "linux"; libc="glibc")
+    Platform("x86_64", "linux"; libc="glibc"),
+    Platform("aarch64", "linux"; libc="glibc")
     # Platform("x86_64", "macos"),
     # Platform("aarch64", "macos"),
     # Platform("x86_64", "windows")
@@ -54,7 +54,7 @@ products = [
 dependencies = [
     BuildDependency(PackageSpec(name="libjulia_jll", uuid="5ad3ddd2-0711-543a-b040-befd59781bbf")),
     BuildDependency(PackageSpec(name="libcxxwrap_julia_jll", uuid="3eaa8342-bff7-56a5-9981-c04077f7cee7")),
-    BuildDependency(PackageSpec(name="GDAL_jll", uuid="a7073274-a066-55f0-b90d-d619367d196c"))
+    Dependency(PackageSpec(name="GDAL_jll", uuid="a7073274-a066-55f0-b90d-d619367d196c"))
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
