@@ -1,0 +1,5 @@
+# Test package for library output of BinaryBuilder.jl
+
+This directory is intended for testing purposes only.
+Yggdrasil will do this automatically using the file [../build_tarballs.jl](../build_tarballs.jl).
+The shared library (e.g. [libjlDGGRID.so](libjlDGGRID.so)) compiled by BinaryBuilder.jl can be put here to see if it works correctly.
