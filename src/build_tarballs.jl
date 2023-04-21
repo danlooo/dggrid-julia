@@ -32,11 +32,14 @@ esac
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = [
-    Platform("x86_64", "linux"; libc="glibc"),
-    Platform("aarch64", "linux"; libc="glibc")
-    # Platform("x86_64", "macos"),
-    # Platform("aarch64", "macos"),
-    # Platform("x86_64", "windows")
+    # see https://github.com/JuliaInterop/CxxWrap.jl/issues/327
+    Platform("x86_64", "linux"; libc="glibc", julia_version="1.8")
+
+    # Platform("x86_64", "linux"; libc="glibc", julia_version="1.8"),
+    # Platform("aarch64", "linux"; libc="glibc", julia_version="1.8")
+    # Platform("x86_64", "macos"; julia_version="1.8"),
+    # Platform("aarch64", "macos"; julia_version="1.8"),
+    # Platform("x86_64", "windows"; julia_version="1.8")
 ]
 
 # all availabble ones
@@ -58,4 +61,4 @@ dependencies = [
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
-build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies; julia_compat="1.6", preferred_gcc_version=v"9.1.0")
+build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies; julia_compat="1.8", preferred_gcc_version=v"9.1.0")
