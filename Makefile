@@ -1,4 +1,4 @@
 .PHONY: main
 main:
-	earthly +dggrid-julia
-	earthly +dggrid-julia-jll
+	earthly +build-3-jll-wrapper
+	earthly +test
