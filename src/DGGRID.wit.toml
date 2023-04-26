@@ -1,0 +1,9 @@
+# WrapIt! configuration file
+# @see https://github.com/grasph/wrapit/blob/main/doc/config.md
+
+module_name = "DGGRID"
+cxx-std = "c++11"
+
+input = ["param.cpp", "dggrid.cpp", "transform.cpp", "DgParamList.cpp"]
+
+include_dirs = ["DGGRID/src/apps/dggrid/", "DGGRID/src/lib/dglib/lib/"]

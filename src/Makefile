@@ -26,7 +26,7 @@ all: $(PRODUCTS)
 clean:
 	-$(RM) $(PRODUCTS) jlDGGRID.d jlDGGRID.o jlDGGRID-report.txt
 
-jl%.cxx: %.wit
+jl%.cxx: %.wit.toml
 	wrapit --force $<
 
 %.o: %.cxx
