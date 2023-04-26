@@ -4,7 +4,7 @@ WORKDIR /work
 
 # Tooling to build both the c++ and the julia side of the wrapper
 build-1-buildenv:
-    FROM DOCKERFILE -f buildenv/Dockerfile buildenv
+    FROM DOCKERFILE -f src/buildenv/Dockerfile src/buildenv
     SAVE IMAGE danlooo/build-cxx-julia
 
 # Create wrappers for the C++ library
