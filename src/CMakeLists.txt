@@ -24,8 +24,10 @@ target_include_directories(jlDGGRID PRIVATE
     /workspace/destdir/include/julia
     DGGRID/src/apps/dggrid
     DGGRID/src/lib
-    DGGRID/src/lib/dglib/include
+    DGGRID/src/lib/dglib/lib
+    DGGRID/src/lib/dglib/include/dglib
     DGGRID/src/lib/shapelib/include/shapelib
+    DGGRID/src/lib/proj4lib/include/
 )
 target_link_libraries(jlDGGRID
     JlCxx::cxxwrap_julia
