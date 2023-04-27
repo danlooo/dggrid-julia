@@ -15,7 +15,6 @@ build-2-cpp-wrapper:
     SAVE ARTIFACT dggrid-julia/DGGRID.jl AS LOCAL src/DGGRID.jl
     SAVE ARTIFACT dggrid-julia/jlDGGRID.cxx AS LOCAL src/jlDGGRID.cxx
     SAVE ARTIFACT dggrid-julia/jlDGGRID.h AS LOCAL src/jlDGGRID.h
-    SAVE ARTIFACT dggrid-julia/jlDGGRID-report.txt AS LOCAL src/jlDGGRID-report.txt
 
 # Compile those wrappers with Binary Builder
 build-3-jll-wrapper:
