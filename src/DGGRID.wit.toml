@@ -3,7 +3,15 @@
 
 module_name = "DGGRID"
 cxx-std = "c++11"
+veto = false
 
-input = ["param.cpp", "dggrid.cpp", "transform.cpp", "DgParamList.cpp"]
+input = ["HEADER"]
 
-include_dirs = ["DGGRID/src/apps/dggrid/", "DGGRID/src/lib/dglib/lib/"]
+include_dirs = [
+    "DGGRID/src/apps/dggrid/",
+
+    "DGGRID/src/lib/dglib/lib/",
+    "DGGRID/src/lib/dglib/include",
+    "DGGRID/src/lib/dglib/include/dglib",
+    "DGGRID/src/lib/dglib/lib",
+]
