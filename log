@@ -1,0 +1,121 @@
+ Init 🚀
+————————————————————————————————————————————————————————————————————————————————
+
+           buildkitd | Found buildkit daemon as docker container (earthly-buildkitd)
+
+ Build 🔧
+————————————————————————————————————————————————————————————————————————————————
+
+       alpine:3.17.2 | --> Load metadata alpine:3.17.2 linux/amd64
+               +base | --> FROM alpine:3.17.2
+               +base | [          ]   0% resolve docker.io/library/alpine:3.17.2@sha256:ff6bdca1701f3a8a67e328815ff2346b0e4067d32ec36b7992c1fdc001dc8517[K
+               +base | [A[----------] 100% resolve docker.io/library/alpine:3.17.2@sha256:ff6bdca1701f3a8a67e328815ff2346b0e4067d32ec36b7992c1fdc001dc8517[K
+               +base | *cached* --> WORKDIR /work
+            internal | --> load metadata for docker.io/library/debian:bullseye-slim
+                 1/9 | --> FROM docker.io/library/debian:bullseye-slim@sha256:9404b05bd09b57c76eccc0c5505b3c88b5feccac808d9b193a4fbac87bb44745
+             context | --> local context ./src/buildenv
+                 1/9 | [          ]   0% resolve docker.io/library/debian:bullseye-slim@sha256:9404b05bd09b57c76eccc0c5505b3c88b5feccac808d9b193a4fbac87bb44745[K
+             context | --> local context .
+             context | --> local context .
+             context | --> local context ./src/buildenv
+             context | --> local context ./src/buildenv
+                 1/9 | [----------] 100% resolve docker.io/library/debian:bullseye-slim@sha256:9404b05bd09b57c76eccc0c5505b3c88b5feccac808d9b193a4fbac87bb44745[K
+             context | --> local context .
+             context | --> local context ./src/buildenv
+             context | sent 1 file stat)
+             context | sent 1 file stat)
+             context | [          ]   0% transferring ./src/buildenv:[K
+             context | [A[          ]   0% transferring .:[K
+             context | transferred 0 file(s) for context ./src/buildenv (9.6 kB, 171 file/dir stats)
+             context | [A[----------] 100% transferring ./src/buildenv:[K
+                 2/9 | *cached* --> WORKDIR /work
+                 3/9 | *cached* --> RUN apt-get update &&     apt-get install -y     git curl     build-essential cmake     clang libclang-dev     libgdal28 libgdal-dev
+                 4/9 | *cached* --> COPY install-julia.sh ./
+                 5/9 | *cached* --> RUN ./install-julia.sh --yes &&     source /root/.bashrc  &&     juliaup add 1.8.5 &&     juliaup default 1.8.5 &&     julia -e 'using Pkg; Pkg.add(["CxxWrap", "BinaryBuilder"])'
+                 6/9 | *cached* --> COPY wrapit/ wrapit/
+                 7/9 | *cached* --> RUN cd wrapit && cmake . && make && cp wrapit /bin/wrapit
+                 8/9 | *cached* --> COPY libcxxwrap-julia/ libcxxwrap-julia/
+                 9/9 | *cached* --> RUN mkdir libcxxwrap-julia-build &&     cd libcxxwrap-julia-build &&     cmake -DJulia_EXECUTABLE=/root/.juliaup/bin/julia ../libcxxwrap-julia &&     cmake --build . --config Release
+             context | transferred 1 file(s) for context . (53 kB, 781 file/dir stats)
+             context | [----------] 100% transferring .:[K
+                 4/9 | *cached* --> COPY install-julia.sh ./
+                 5/9 | *cached* --> RUN ./install-julia.sh --yes &&     source /root/.bashrc  &&     juliaup add 1.8.5 &&     juliaup default 1.8.5 &&     julia -e 'using Pkg; Pkg.add(["CxxWrap", "BinaryBuilder"])'
+                 6/9 | *cached* --> COPY wrapit/ wrapit/
+                 7/9 | *cached* --> RUN cd wrapit && cmake . && make && cp wrapit /bin/wrapit
+                 8/9 | *cached* --> COPY libcxxwrap-julia/ libcxxwrap-julia/
+                 9/9 | *cached* --> RUN mkdir libcxxwrap-julia-build &&     cd libcxxwrap-julia-build &&     cmake -DJulia_EXECUTABLE=/root/.juliaup/bin/julia ../libcxxwrap-julia &&     cmake --build . --config Release
++build-2-cpp-wrapper | *cached* --> COPY src dggrid-julia
++build-2-cpp-wrapper | *cached* --> RUN bash dggrid-julia/build.sh dggrid-julia
+                 4/9 | *cached* --> COPY install-julia.sh ./
+                 5/9 | *cached* --> RUN ./install-julia.sh --yes &&     source /root/.bashrc  &&     juliaup add 1.8.5 &&     juliaup default 1.8.5 &&     julia -e 'using Pkg; Pkg.add(["CxxWrap", "BinaryBuilder"])'
+                 6/9 | *cached* --> COPY wrapit/ wrapit/
+                 7/9 | *cached* --> RUN cd wrapit && cmake . && make && cp wrapit /bin/wrapit
+                 8/9 | *cached* --> COPY libcxxwrap-julia/ libcxxwrap-julia/
+                 9/9 | *cached* --> RUN mkdir libcxxwrap-julia-build &&     cd libcxxwrap-julia-build &&     cmake -DJulia_EXECUTABLE=/root/.juliaup/bin/julia ../libcxxwrap-julia &&     cmake --build . --config Release
++build-2-cpp-wrapper | *cached* --> COPY src dggrid-julia
++build-2-cpp-wrapper | *cached* --> RUN bash dggrid-julia/build.sh dggrid-julia
++build-2-cpp-wrapper | *cached* --> SAVE ARTIFACT dggrid-julia/jlDGGRID.h +build-2-cpp-wrapper/jlDGGRID.h AS LOCAL src/jlDGGRID.h
+             context | --> local context .
+             context | --> local context ./src/buildenv
+                 4/9 | *cached* --> COPY install-julia.sh ./
+                 5/9 | *cached* --> RUN ./install-julia.sh --yes &&     source /root/.bashrc  &&     juliaup add 1.8.5 &&     juliaup default 1.8.5 &&     julia -e 'using Pkg; Pkg.add(["CxxWrap", "BinaryBuilder"])'
+                 6/9 | *cached* --> COPY wrapit/ wrapit/
+                 7/9 | *cached* --> RUN cd wrapit && cmake . && make && cp wrapit /bin/wrapit
+                 8/9 | *cached* --> COPY libcxxwrap-julia/ libcxxwrap-julia/
+                 9/9 | *cached* --> RUN mkdir libcxxwrap-julia-build &&     cd libcxxwrap-julia-build &&     cmake -DJulia_EXECUTABLE=/root/.juliaup/bin/julia ../libcxxwrap-julia &&     cmake --build . --config Release
++build-2-cpp-wrapper | *cached* --> COPY src dggrid-julia
++build-2-cpp-wrapper | *cached* --> RUN bash dggrid-julia/build.sh dggrid-julia
++build-2-cpp-wrapper | *cached* --> SAVE ARTIFACT dggrid-julia/jlDGGRID.cxx +build-2-cpp-wrapper/jlDGGRID.cxx AS LOCAL src/jlDGGRID.cxx
+             context | --> local context ./src/buildenv
+             context | --> local context .
+                 4/9 | *cached* --> COPY install-julia.sh ./
+                 5/9 | *cached* --> RUN ./install-julia.sh --yes &&     source /root/.bashrc  &&     juliaup add 1.8.5 &&     juliaup default 1.8.5 &&     julia -e 'using Pkg; Pkg.add(["CxxWrap", "BinaryBuilder"])'
+                 6/9 | *cached* --> COPY wrapit/ wrapit/
+                 7/9 | *cached* --> RUN cd wrapit && cmake . && make && cp wrapit /bin/wrapit
+                 8/9 | *cached* --> COPY libcxxwrap-julia/ libcxxwrap-julia/
+                 9/9 | *cached* --> RUN mkdir libcxxwrap-julia-build &&     cd libcxxwrap-julia-build &&     cmake -DJulia_EXECUTABLE=/root/.juliaup/bin/julia ../libcxxwrap-julia &&     cmake --build . --config Release
++build-2-cpp-wrapper | *cached* --> COPY src dggrid-julia
++build-2-cpp-wrapper | *cached* --> RUN bash dggrid-julia/build.sh dggrid-julia
++build-2-cpp-wrapper | *cached* --> SAVE ARTIFACT dggrid-julia/DGGRID.jl +build-2-cpp-wrapper/DGGRID.jl AS LOCAL src/DGGRID.jl
+              output | --> exporting outputs
+              output | sent 1 file stat)
+             context | --> local context ./src/buildenv
+             context | --> local context .
+              output | --> exporting outputs
+
+ Push Summary ⏫ (disabled)
+————————————————————————————————————————————————————————————————————————————————
+
+To enable pushing use earthly --push
+
+ Local Output Summary 🎁
+————————————————————————————————————————————————————————————————————————————————
+
+Artifact github.com/danlooo/dggrid-julia:test_header_files_DgApSeq.h+build-2-cpp-wrapper/DGGRID.jl output as src/DGGRID.jl
+Artifact github.com/danlooo/dggrid-julia:test_header_files_DgApSeq.h+build-2-cpp-wrapper/jlDGGRID.cxx output as src/jlDGGRID.cxx
+Artifact github.com/danlooo/dggrid-julia:test_header_files_DgApSeq.h+build-2-cpp-wrapper/jlDGGRID.h output as src/jlDGGRID.h
+
+
+========================== 🌍 Earthly Build  ✅ SUCCESS ==========================
+
+Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
+┌ Warning: Running Registrator on a Julia version that does not support weak dependencies. Weak dependencies will not be registered.
+└ @ RegistryTools ~/.julia/packages/RegistryTools/tHkoa/src/RegistryTools.jl:18
+[ Info: Building and deploying version 0.1.0+0 to /home/dloos/.julia/dev/DGGRID_jll
+[ Info: Building for x86_64-linux-gnu-cxx03-julia_version+1.8, x86_64-linux-gnu-cxx11-julia_version+1.8
+┌ Warning: Symlink libunwind.h from artifact d26a63de8392baa06021014ef0cba5e248036eaa already exists in artifact 6fdf8fc95fc9f34ddbbc9fe77e7687696aee3185
+└ @ BinaryBuilderBase ~/.julia/packages/BinaryBuilderBase/YqHSn/src/Prefix.jl:246
+┌ Warning: Symlink unwind.h from artifact d26a63de8392baa06021014ef0cba5e248036eaa already exists in artifact 6fdf8fc95fc9f34ddbbc9fe77e7687696aee3185
+└ @ BinaryBuilderBase ~/.julia/packages/BinaryBuilderBase/YqHSn/src/Prefix.jl:246
+┌ Warning: Symlink libunwind.a from artifact d26a63de8392baa06021014ef0cba5e248036eaa already exists in artifact 6fdf8fc95fc9f34ddbbc9fe77e7687696aee3185
+└ @ BinaryBuilderBase ~/.julia/packages/BinaryBuilderBase/YqHSn/src/Prefix.jl:246
+┌ Warning: Symlink libunwind.so from artifact d26a63de8392baa06021014ef0cba5e248036eaa already exists in artifact 6fdf8fc95fc9f34ddbbc9fe77e7687696aee3185
+└ @ BinaryBuilderBase ~/.julia/packages/BinaryBuilderBase/YqHSn/src/Prefix.jl:246
+┌ Warning: Symlink libunwind.h from artifact d26a63de8392baa06021014ef0cba5e248036eaa already exists in artifact 6fdf8fc95fc9f34ddbbc9fe77e7687696aee3185
+└ @ BinaryBuilderBase ~/.julia/packages/BinaryBuilderBase/YqHSn/src/Prefix.jl:246
+┌ Warning: Symlink unwind.h from artifact d26a63de8392baa06021014ef0cba5e248036eaa already exists in artifact 6fdf8fc95fc9f34ddbbc9fe77e7687696aee3185
+└ @ BinaryBuilderBase ~/.julia/packages/BinaryBuilderBase/YqHSn/src/Prefix.jl:246
+┌ Warning: Symlink libunwind.a from artifact d26a63de8392baa06021014ef0cba5e248036eaa already exists in artifact 6fdf8fc95fc9f34ddbbc9fe77e7687696aee3185
+└ @ BinaryBuilderBase ~/.julia/packages/BinaryBuilderBase/YqHSn/src/Prefix.jl:246
+┌ Warning: Symlink libunwind.so from artifact d26a63de8392baa06021014ef0cba5e248036eaa already exists in artifact 6fdf8fc95fc9f34ddbbc9fe77e7687696aee3185
+└ @ BinaryBuilderBase ~/.julia/packages/BinaryBuilderBase/YqHSn/src/Prefix.jl:246
