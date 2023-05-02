@@ -1,5 +1,7 @@
 module DGGRID
 
+export clearList, insertParam
+
 using CxxWrap
 @wrapmodule("jlDGGRID")
 
