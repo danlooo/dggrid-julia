@@ -19,17 +19,5 @@ Pkg.instantiate()
         p = DGGRID_jll.DgGridPList()
         @test typeof(p) == DGGRID_jll.DgGridPListAllocated
     end
-
-    @testset "Transform" begin
-        @test begin
-            p = DGGRID_jll.DgGridPList()
-            true
-        end
-        @test begin
-            p = DGGRID_jll.DgGridPList()
-            # tp = DGGRID_jll.TransformParam(p)
-            true
-        end
-    end
 end
 

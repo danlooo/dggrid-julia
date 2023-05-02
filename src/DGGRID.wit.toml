@@ -6,4 +6,19 @@ cxx-std = "c++11"
 
 input = ["param.cpp", "dggrid.cpp", "transform.cpp", "DgParamList.cpp"]
 
-include_dirs = ["DGGRID/src/apps/dggrid/", "DGGRID/src/lib/dglib/lib/"]
+include_dirs = [
+    "DGGRID/src/apps/dggrid/",
+
+    "DGGRID/src/lib/dglib/lib/",
+    "DGGRID/src/lib/dglib/include/",
+    "DGGRID/src/lib/dglib/include/dglib/",
+    "DGGRID/src/lib/dglib/lib/",
+]
+
+extra_headers = [
+    "DgOutShapefile.h",
+    "DgOutPRCellsFile.h",
+    "DgOutPRPtsFile.h",
+    "DgOutNeighborsFile.h",
+    "DgOutChildrenFile.h",
+]

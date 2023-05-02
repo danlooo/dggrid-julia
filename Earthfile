@@ -12,6 +12,8 @@ build-2-cpp-wrapper:
     FROM +build-1-buildenv
     COPY src dggrid-julia
     RUN cd dggrid-julia && wrapit --force DGGRID.wit.toml
+    LOCALLY
+        RUN git commit -am "Update wrapit bindings"
     SAVE ARTIFACT dggrid-julia/DGGRID.jl AS LOCAL src/DGGRID.jl
     SAVE ARTIFACT dggrid-julia/jlDGGRID.cxx AS LOCAL src/jlDGGRID.cxx
     SAVE ARTIFACT dggrid-julia/jlDGGRID.h AS LOCAL src/jlDGGRID.h
@@ -21,7 +23,7 @@ build-3-jll-wrapper:
     FROM +build-2-cpp-wrapper
     # Binary Builder does not work inside docker and has its own isolated environment
     LOCALLY
-    RUN julia src/build_tarballs.jl --deploy="local" --debug
+        RUN julia src/build_tarballs.jl --deploy="local" --debug
 
 test:
     FROM +build-1-buildenv
