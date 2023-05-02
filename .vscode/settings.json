@@ -3,5 +3,6 @@
         "build/**": true,
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
-    }
+    },
+    "C_Cpp.workspaceParsingPriority": "low"
 }
