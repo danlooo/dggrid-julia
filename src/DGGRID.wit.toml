@@ -4,7 +4,7 @@
 module_name = "DGGRID"
 cxx-std = "c++11"
 
-input = ["param.cpp", "dggrid.cpp", "transform.cpp", "DgParamList.cpp"]
+input = ["DgParamList.h"]
 
 include_dirs = [
     "DGGRID/src/apps/dggrid/",

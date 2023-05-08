@@ -1,6 +1,7 @@
 module DGGRID
 
-export clearList, insertParam
+export asString, assign, clearList, insertParam, isApplicable, isDefault, isUsed, isUserSet, isValid, parameters
+export parameters!, setIsApplicable, setIsDefault, setIsUsed, setIsUserSet, setIsValid, valToStr, validate, validationErrMsg
 
 using CxxWrap
 @wrapmodule("jlDGGRID")
