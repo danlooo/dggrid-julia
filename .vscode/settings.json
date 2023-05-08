@@ -4,5 +4,6 @@
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
     },
-    "C_Cpp.workspaceParsingPriority": "low"
+    "C_Cpp.workspaceParsingPriority": "low",
+    "cmake.configureOnOpen": false
 }
